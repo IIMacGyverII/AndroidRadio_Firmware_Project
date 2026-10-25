@@ -70,6 +70,14 @@ def variants() -> list:
         d = json.loads(p.read_text(encoding="utf-8"))
         if d.get("device") != p.parent.name:
             raise SystemExit(f"{p}: device {d.get('device')} is not the folder {p.parent.name}")
+        dev = p.parent / "device.json"                   # the phone's Build.MODEL, so the app can match a variant block to the phone it runs on
+        if dev.is_file():
+            dj = json.loads(dev.read_text(encoding="utf-8"))
+            if dj.get("id") != p.parent.name:
+                raise SystemExit(f"{dev}: id {dj.get('id')} is not the folder {p.parent.name}")
+            d["buildModel"] = dj.get("buildModel") or dj.get("model") or ""
+            d["vendor"] = dj.get("vendor", "")
+            d["model"] = dj.get("model", "")
         for v in d.get("variants", []):
             for k in ("moduleVersion", "stockApp", "assetSha256", "assetSize", "supportedBase", "reports", "source"):
                 if k not in v:

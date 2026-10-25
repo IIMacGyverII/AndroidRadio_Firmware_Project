@@ -36,3 +36,10 @@ factory row only.
 4. Commit `catalog/firmware.json` and `catalog/firmware.json.sig` together with the image folder.
 
 Phones ignore a catalogue whose serial is lower than the one they already have, so never publish a lower serial.
+
+## Variant blocks and the phone's model
+
+Each `variants` entry is one device folder. Since serial 4 it also carries `buildModel` (the phone's `Build.MODEL`, from
+`devices/<id>/device.json`), `vendor` and `model`, so SignalDeck can match the block to the phone it runs on even when
+no image row names that device yet. A device without a `device.json` has an empty `buildModel` and is matched only
+through its image rows.
