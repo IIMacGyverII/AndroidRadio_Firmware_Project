@@ -14,7 +14,8 @@ Newest first. One entry per change that a user of SignalDeck or a reader of the 
   the signature verifies, the agent files are mirrored, no bench or beta image is present.
 - `SAFETY.md`: the owner's rule for loading your own image (Advanced switch, off by default, two confirmations,
   hash typed, all other checks kept).
-- Catalogue serial 2.
+- `research/METHODS.md`: the bench, the reading, the build, the test order, heat, the loader proofs, the process.
+- Catalogue serial 3 (serial 2 was signed over CRLF bytes and never valid on a Linux checkout; the builder now writes LF and `.gitattributes` keeps the catalogue files byte-exact).
 
 ## 2026-10-25 — Repository created
 

@@ -1,0 +1,7 @@
+# The signed catalogue and its signature are byte-exact: never convert their line endings.
+catalog/firmware.json -text
+catalog/*.sig -text
+catalog/public_key.pem -text
+catalog/public_key.b64 -text
+# Firmware images are binary.
+*.bin binary

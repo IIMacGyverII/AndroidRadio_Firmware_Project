@@ -105,7 +105,10 @@ def main():
             raise SystemExit(f"serial {a.serial} is not above the published {old.get('serial')}")
     doc = {"format": 1, "serial": a.serial, "generated": datetime.date.today().isoformat(), "base": BASE_URL,
            "images": entries, "variants": vs}
-    out.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    # LF only, whatever the platform: the signature covers these exact bytes, and git stores them unconverted
+    # (.gitattributes marks the catalogue files -text).
+    with open(out, "w", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
     if out == published:
         sig = Path(str(out) + ".sig")
         if sig.exists():

@@ -16,7 +16,7 @@ This repository is the firmware home. The research and the bench live in
 | `catalog/` | `firmware.json` + `.sig`, the signed list SignalDeck fetches (images and the variant registry); the public key, `VERIFY.md` (check it yourself) and `KEYS.md` (custody and rotation) |
 | `devices/<device>/` | One folder per phone: `README.md` (what is known, from which source, how far it is verified), `device.json` (the same, machine-readable, schema in `devices/device.schema.json`) and `variants.json` (every module version and stock asset seen on that model, `devices/VARIANTS.md`); `TEMPLATE.md` for a new phone |
 | `modules/<module>/` | The radio module itself (HR-C7000 + AT1846S today): memory map, protocol, update mode, what the firmware does and does not do |
-| `research/` | Index of the research behind every image, pointing into the phonedmrapp repository, with the findings that matter summarised |
+| `research/` | Index of the research behind every image, pointing into the phonedmrapp repository, with the findings that matter summarised; `research/METHODS.md` is how the firmware was understood, built and tested |
 | `scripts/` | Build, sign and verify the catalogue; verify a local image against it |
 | `SAFETY.md` | What a user needs to know before loading anything, what the loader checks for them, and the deliberately hard path for loading their own image |
 | `RECOVERY.md` | What to do when the module no longer answers |

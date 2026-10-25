@@ -1,5 +1,7 @@
 # Research index
 
+**How the work was done and how every image is tested: `METHODS.md`.**
+
 The research lives in [phonedmrapp](https://github.com/IIMacGyverII/phonedmrapp); this is the map to it, with the
 findings that decide what firmware can and cannot do. Dates are when the finding was measured.
 
