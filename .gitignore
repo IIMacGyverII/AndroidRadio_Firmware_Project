@@ -2,7 +2,8 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
-# never the signing key
+# never a private key; the published public key is allowed
 *.pem
+!catalog/public_key*.pem
 # local scratch
 scratch/
