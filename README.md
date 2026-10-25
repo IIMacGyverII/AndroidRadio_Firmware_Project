@@ -13,12 +13,14 @@ This repository is the firmware home. The research and the bench live in
 | Folder | Holds |
 |---|---|
 | `firmware/<device>/<tag>/` | One folder per image: the `.bin`, a `manifest.json` (hashes, base image, what it changes, where it was built), and a `README.md` for people |
-| `catalog/` | `firmware.json` + `.sig`, the signed list SignalDeck fetches; how it is built, signed and published |
-| `devices/<device>/` | One folder per phone: `README.md` (what is known, from which source, how far it is verified) and `device.json` (the same, machine-readable) |
+| `catalog/` | `firmware.json` + `.sig`, the signed list SignalDeck fetches (images and the variant registry); the public key, `VERIFY.md` (check it yourself) and `KEYS.md` (custody and rotation) |
+| `devices/<device>/` | One folder per phone: `README.md` (what is known, from which source, how far it is verified), `device.json` (the same, machine-readable, schema in `devices/device.schema.json`) and `variants.json` (every module version and stock asset seen on that model, `devices/VARIANTS.md`); `TEMPLATE.md` for a new phone |
 | `modules/<module>/` | The radio module itself (HR-C7000 + AT1846S today): memory map, protocol, update mode, what the firmware does and does not do |
 | `research/` | Index of the research behind every image, pointing into the phonedmrapp repository, with the findings that matter summarised |
 | `scripts/` | Build, sign and verify the catalogue; verify a local image against it |
-| `SAFETY.md` | What a user needs to know before loading anything, and what the loader checks for them |
+| `SAFETY.md` | What a user needs to know before loading anything, what the loader checks for them, and the deliberately hard path for loading their own image |
+| `RECOVERY.md` | What to do when the module no longer answers |
+| `.github/` | Issue forms (new device, firmware variant seen, image problem), the pull-request checklist, and the CI check that refuses a manifest whose hashes do not match its file, an unsigned or mis-signed catalogue, or a bench image |
 
 ## Status
 

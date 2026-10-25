@@ -39,7 +39,25 @@ SignalDeck's Module firmware page implements it; this page explains it.
 If the module no longer answers at all but still answers the update prompt, the page offers the factory image only,
 from your saved copy or from this repository's catalogue, with a warning. That is the "I need a fresh copy" case.
 
+## Loading your own image (deliberately not easy)
+
+If you have modified the firmware yourself, SignalDeck can load it, but only after you switch that on and accept
+what it means. The switch lives under the firmware page's Advanced section, is off by default, and turning it on
+shows a warning you must confirm twice. With it on:
+
+- the file is still taken only from `Download/DMR/Firmware/`, its size must equal the base image's, and the page
+  shows its hash and the version string it carries; you type the first eight characters of that hash to confirm
+  you mean this file;
+- everything else stays: the verified factory backup must be on the phone, the module and stock app must match a
+  known device, pre-flight runs, the tag is read back after the load, and a module that does not answer gets the
+  factory image back automatically;
+- the page cannot verify an unlisted image after loading beyond its tag, says so, and records the load in the
+  history as an unlisted image.
+
+The switch turns itself off after each load. Nothing you load this way is covered by the catalogue or this
+project; the responsibility for what the radio does with it is yours.
+
 ## What is never offered
 
-Band-limit or power changes; any file whose hash is not in the signed catalogue; any image built for a different
-base firmware than the one your module runs.
+Band-limit or power changes; any file whose hash is not in the signed catalogue (unless you switched on your own
+images as above); any image built for a different base firmware than the one your module runs.

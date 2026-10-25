@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: SignalDeck app issues
+    url: https://github.com/IIMacGyverII/SignalDeck/issues
+    about: Problems with the app itself (not with a firmware image) go to the SignalDeck repository.
+  - name: Research and bench work
+    url: https://github.com/IIMacGyverII/phonedmrapp
+    about: The reverse engineering, the patch tools and the bench notes live in phonedmrapp.

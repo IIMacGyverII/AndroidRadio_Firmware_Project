@@ -1,0 +1,46 @@
+name: New device report
+description: A phone with a radio module that is not in devices/ yet, from a SignalDeck device report
+title: "[device] <vendor> <model>"
+labels: ["device"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Use SignalDeck → Device → Run all checks and attach the zip it makes. The zip is already
+        scrubbed of callsigns and positions; please do not paste your callsign, DMR ID, location or phone serial
+        anywhere in this form.
+  - type: input
+    id: model
+    attributes:
+      label: Phone vendor and model
+      placeholder: Ulefone Armor 26 Ultra
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android version and build (stock ROM or a GSI?)
+  - type: input
+    id: stockapp
+    attributes:
+      label: Stock radio app package and version
+      placeholder: com.pri.prizeinterphone V1.0
+  - type: input
+    id: version
+    attributes:
+      label: Module version string, if the report shows one
+      placeholder: DMR003.UV4T.V022
+  - type: textarea
+    id: report
+    attributes:
+      label: Device report
+      description: Attach the Run all checks zip here (drag it in). Say if the module answered the probe.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm
+      options:
+        - label: The form and the attachment contain nothing that identifies me (callsign, ID, location, serial).
+          required: true

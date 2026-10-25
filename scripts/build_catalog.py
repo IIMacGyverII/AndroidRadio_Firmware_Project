@@ -60,30 +60,59 @@ def check(manifest_path: Path) -> dict:
     return m
 
 
+ALLOWED_STATUS = {"stock", "released"}   # bench and beta images are never committed here (owner, 2026-10-25)
+
+
+def variants() -> list:
+    """Every devices/*/variants.json, folded into the catalogue so the app can name a known-but-unsupported variant."""
+    out = []
+    for p in sorted((ROOT / "devices").glob("*/variants.json")):
+        d = json.loads(p.read_text(encoding="utf-8"))
+        if d.get("device") != p.parent.name:
+            raise SystemExit(f"{p}: device {d.get('device')} is not the folder {p.parent.name}")
+        for v in d.get("variants", []):
+            for k in ("moduleVersion", "stockApp", "assetSha256", "assetSize", "supportedBase", "reports", "source"):
+                if k not in v:
+                    raise SystemExit(f"{p}: variant missing {k}")
+        out.append(d)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--check", action="store_true", help="verify only")
     ap.add_argument("--serial", type=int, help="write the catalogue with this serial")
+    ap.add_argument("--out", type=Path, help="write to this path instead of catalog/firmware.json (CI rebuild)")
+    ap.add_argument("--force", action="store_true", help="allow a serial that is not above the published one (CI rebuild)")
     a = ap.parse_args()
     if not a.check and a.serial is None:
         ap.error("--check or --serial N")
     entries = [check(p) for p in sorted((ROOT / "firmware").glob("*/*/manifest.json"))]
-    print(f"{len(entries)} image(s) verified")
+    for e in entries:
+        if e["status"] not in ALLOWED_STATUS:
+            raise SystemExit(f"{e['device']}/{e['tag']}: status {e['status']!r} is not allowed here (stock or released only)")
+    vs = variants()
+    print(f"{len(entries)} image(s) verified, {sum(len(d['variants']) for d in vs)} variant(s) from {len(vs)} device(s)")
     for e in entries:
         print(f"  {e['device']}/{e['tag']}  {e['sha256'][:12]}  {e['status']}")
     if a.check:
         return
-    out = ROOT / "catalog" / "firmware.json"
-    if out.exists():
-        old = json.loads(out.read_text(encoding="utf-8"))
+    out = a.out or (ROOT / "catalog" / "firmware.json")
+    published = ROOT / "catalog" / "firmware.json"
+    if published.exists() and not a.force:
+        old = json.loads(published.read_text(encoding="utf-8"))
         if a.serial <= old.get("serial", 0):
             raise SystemExit(f"serial {a.serial} is not above the published {old.get('serial')}")
-    doc = {"format": 1, "serial": a.serial, "generated": datetime.date.today().isoformat(), "base": BASE_URL, "images": entries}
+    doc = {"format": 1, "serial": a.serial, "generated": datetime.date.today().isoformat(), "base": BASE_URL,
+           "images": entries, "variants": vs}
     out.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-    sig = Path(str(out) + ".sig")
-    if sig.exists():
-        sig.unlink()
-    print(f"wrote {out} serial {a.serial}; now run scripts/sign_catalog.py")
+    if out == published:
+        sig = Path(str(out) + ".sig")
+        if sig.exists():
+            sig.unlink()
+        print(f"wrote {out} serial {a.serial}; now run scripts/sign_catalog.py")
+    else:
+        print(f"wrote {out} serial {a.serial}")
 
 
 if __name__ == "__main__":

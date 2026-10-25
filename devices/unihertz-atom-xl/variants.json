@@ -1,0 +1,17 @@
+{
+  "device": "unihertz-atom-xl",
+  "variants": [
+    {
+      "moduleVersion": "DMR006.U4A.V082",
+      "stockApp": { "package": "com.agold.intercom", "version": "2.0" },
+      "assetSha256": null,
+      "assetSize": null,
+      "supportedBase": false,
+      "reports": 2,
+      "firstSeen": "2026-10-24",
+      "lastSeen": "2026-10-24",
+      "source": "report",
+      "notes": "Different module build from the Armor's; its stock image has not been extracted, so no base and no patches yet."
+    }
+  ]
+}

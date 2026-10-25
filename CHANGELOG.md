@@ -2,6 +2,20 @@
 
 Newest first. One entry per change that a user of SignalDeck or a reader of the repository would notice.
 
+## 2026-10-25 — Registry, keys, recovery, templates, CI
+
+- Variant registry: `devices/<device>/variants.json` for every module version and stock asset seen on a model,
+  folded into the signed catalogue (`variants`), with `devices/VARIANTS.md`.
+- Public signing key published (`catalog/public_key.pem`, fingerprint in `catalog/VERIFY.md`) with verification
+  instructions; `catalog/KEYS.md` records custody, the planned separate firmware key, and rotation.
+- `RECOVERY.md` for a module that no longer answers.
+- `devices/TEMPLATE.md` and `devices/device.schema.json`; GitHub issue forms and a pull-request checklist.
+- CI (`.github/workflows/check.yml`): manifests match their files, the committed catalogue matches the manifests,
+  the signature verifies, the agent files are mirrored, no bench or beta image is present.
+- `SAFETY.md`: the owner's rule for loading your own image (Advanced switch, off by default, two confirmations,
+  hash typed, all other checks kept).
+- Catalogue serial 2.
+
 ## 2026-10-25 — Repository created
 
 - Layout: `firmware/`, `catalog/`, `devices/`, `modules/`, `research/`, `scripts/`, with `SAFETY.md` and `NOTICE.md`.

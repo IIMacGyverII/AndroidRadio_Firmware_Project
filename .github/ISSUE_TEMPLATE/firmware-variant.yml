@@ -1,0 +1,47 @@
+name: Firmware variant seen
+description: SignalDeck said "firmware variant not yet supported", or your stock app's firmware differs from the known one
+title: "[variant] <module version string> on <model>"
+labels: ["variant"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is how the variant registry (devices/VARIANTS.md) grows. Nothing here identifies you; please keep it that way.
+  - type: input
+    id: model
+    attributes:
+      label: Phone vendor and model
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Module version string (Device page, or the firmware page's "Installed" line)
+      placeholder: DMR003.XXXX.V0YY
+    validations:
+      required: true
+  - type: input
+    id: stockapp
+    attributes:
+      label: Stock radio app package and version
+  - type: input
+    id: hash
+    attributes:
+      label: Stock firmware asset hash shown by the firmware page (first 12 characters are enough)
+      placeholder: 90e361fda108
+  - type: textarea
+    id: message
+    attributes:
+      label: The exact message SignalDeck showed
+  - type: textarea
+    id: report
+    attributes:
+      label: Device report (optional, helps a lot)
+      description: SignalDeck → Device → Run all checks; attach the zip.
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm
+      options:
+        - label: Nothing in this form identifies me.
+          required: true

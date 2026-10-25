@@ -1,0 +1,17 @@
+{
+  "device": "ulefone-armor-26-ultra",
+  "variants": [
+    {
+      "moduleVersion": "DMR003.UV4T.V022",
+      "stockApp": { "package": "com.pri.prizeinterphone", "version": "V1.0" },
+      "assetSha256": "90e361fda1082cdd010f8f2127eab97786f2a078f2f7590821c26867526c8c10",
+      "assetSize": 378620,
+      "supportedBase": true,
+      "reports": 1,
+      "firstSeen": "2026-10-13",
+      "lastSeen": "2026-10-25",
+      "source": "measured",
+      "notes": "The reference phone. The stock app sends a time-out byte of 0 at start, which turns the module's own 120 s timer off."
+    }
+  ]
+}

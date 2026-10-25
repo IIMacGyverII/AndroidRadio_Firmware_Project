@@ -1,0 +1,17 @@
+{
+  "device": "ulefone-armor-20wt",
+  "variants": [
+    {
+      "moduleVersion": null,
+      "stockApp": { "package": "com.pri.prizeinterphone", "version": null },
+      "assetSha256": null,
+      "assetSize": null,
+      "supportedBase": false,
+      "reports": 1,
+      "firstSeen": "2026-10-24",
+      "lastSeen": "2026-10-24",
+      "source": "report",
+      "notes": "The module was powered off during the report's probe, so no version string yet. Same stock-app family as the Armor 26 Ultra."
+    }
+  ]
+}

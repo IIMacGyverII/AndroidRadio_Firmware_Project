@@ -1,0 +1,56 @@
+name: Image problem
+description: A listed image failed to load, failed verification, or behaves wrongly on the radio
+title: "[image] <tag> on <model>: <one line>"
+labels: ["image"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        If the module no longer answers, read RECOVERY.md first; the factory image is the way back. Then tell us what
+        happened. Nothing here identifies you; please keep it that way.
+  - type: input
+    id: tag
+    attributes:
+      label: Image tag and the first 12 characters of its hash (from the firmware page or the catalogue)
+      placeholder: DMR003.UV4T.V022 90e361fda108
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Phone vendor and model
+    validations:
+      required: true
+  - type: input
+    id: app
+    attributes:
+      label: SignalDeck version
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Where it went wrong
+      options:
+        - Pre-flight refused it (say the reason below)
+        - During the transfer
+        - After the load (wrong tag, automatic factory restore ran)
+        - The image loaded but the radio behaves wrongly
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: The result line from the firmware page, and the handshake log if the page shows one (Handshake log button).
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Device report (optional)
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm
+      options:
+        - label: Nothing in this form identifies me.
+          required: true

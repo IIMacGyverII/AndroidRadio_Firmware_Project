@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AndroidRadio device",
+  "type": "object",
+  "required": ["id", "vendor", "model", "status", "module", "stockApp", "loader"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "folder name, vendor-model" },
+    "vendor": { "type": "string" },
+    "model": { "type": "string" },
+    "buildModel": { "type": "string", "description": "android.os.Build.MODEL as the phone reports it" },
+    "signaldeckProfile": { "type": ["string", "null"], "description": "SignalDeck DeviceProfile id, when one exists" },
+    "status": { "enum": ["measured", "report", "read", "inferred"] },
+    "module": {
+      "type": "object",
+      "required": ["family"],
+      "properties": {
+        "family": { "type": "string", "description": "folder under modules/" },
+        "rfIc": { "type": "string" },
+        "versionStrings": { "type": "array", "items": { "type": "string" } },
+        "controlPort": { "type": ["string", "null"] },
+        "baud": { "type": ["integer", "null"] },
+        "serialLib": { "type": ["string", "null"] },
+        "powerNode": { "type": ["string", "null"] },
+        "pttNode": { "type": ["string", "null"] },
+        "frontEnd": { "type": ["string", "null"], "description": "an MCU, HAL or daemon between the phone and the module, if any" }
+      }
+    },
+    "stockApp": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": { "type": "string" },
+        "version": { "type": ["string", "null"] },
+        "firmwareAsset": { "type": ["string", "null"] },
+        "firmwareAssetSha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+        "updaterOverridePath": { "type": ["string", "null"] }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "properties": {
+        "path": { "type": "string" },
+        "format": { "type": "string" },
+        "phoneCodec": { "type": ["string", "null"] }
+      }
+    },
+    "loader": {
+      "type": "object",
+      "required": ["enterUpdateMode", "protocol"],
+      "properties": {
+        "enterUpdateMode": { "type": "string", "description": "gpio-knock…, hal:<method>, mcu:<command>, or 'not captured'" },
+        "protocol": { "type": "string" },
+        "promptByte": { "type": ["string", "null"] },
+        "checks": { "type": ["string", "null"] },
+        "measured": { "type": ["string", "null"], "format": "date" },
+        "recoveryAfterInterruptedTransfer": { "type": ["boolean", "null"] }
+      }
+    },
+    "sources": { "type": "object", "additionalProperties": { "type": "string" } }
+  }
+}

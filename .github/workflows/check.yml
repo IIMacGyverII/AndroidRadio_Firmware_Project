@@ -1,0 +1,39 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  catalogue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install cryptography
+      - name: Every manifest matches its file
+        run: python scripts/build_catalog.py --check
+      - name: The committed catalogue is what the manifests produce
+        run: |
+          python - <<'EOF'
+          import json, subprocess, sys, pathlib
+          cat = json.loads(pathlib.Path("catalog/firmware.json").read_text(encoding="utf-8"))
+          # rebuild into a scratch copy and compare everything but the generation date
+          subprocess.run([sys.executable, "scripts/build_catalog.py", "--serial", str(cat["serial"]), "--out", "/tmp/rebuilt.json", "--force"], check=True)
+          fresh = json.loads(pathlib.Path("/tmp/rebuilt.json").read_text(encoding="utf-8"))
+          for k in ("generated",):
+              cat.pop(k, None); fresh.pop(k, None)
+          if cat != fresh:
+              raise SystemExit("catalog/firmware.json does not match the manifests; rebuild it")
+          print("catalogue matches the manifests")
+          EOF
+      - name: The catalogue's signature verifies with the published key
+        run: python scripts/verify_catalog.py
+      - name: Agent files are mirrored
+        run: git diff --no-index --exit-code CLAUDE.md GROK.md
+      - name: No bench or beta image slipped in
+        run: |
+          ! grep -R '"status": *"bench"' firmware/ --include=manifest.json
+          ! grep -R '"status": *"beta"' firmware/ --include=manifest.json
