@@ -1,0 +1,43 @@
+{
+  "id": "ulefone-armor-26-ultra",
+  "vendor": "Ulefone",
+  "model": "Armor 26 Ultra",
+  "buildModel": "Armor 26 Ultra",
+  "signaldeckProfile": "ulefone-armor26ultra",
+  "status": "measured",
+  "module": {
+    "family": "hr-c7000",
+    "rfIc": "AT1846S",
+    "versionStrings": ["DMR003.UV4T.V022"],
+    "controlPort": "/dev/ttyS0",
+    "baud": 57600,
+    "serialLib": "/system/lib64/libinterphone_serial_port.so",
+    "powerNode": "/sys/devices/platform/dmr009/pwd",
+    "pttNode": "/sys/devices/platform/dmr009/ptt"
+  },
+  "stockApp": {
+    "package": "com.pri.prizeinterphone",
+    "version": "V1.0",
+    "firmwareAsset": "assets/DMR003.UV4T.V022.bin",
+    "firmwareAssetSha256": "90e361fda1082cdd010f8f2127eab97786f2a078f2f7590821c26867526c8c10",
+    "updaterOverridePath": "/sdcard/DMR/DMRDEBUG.bin"
+  },
+  "audio": {
+    "path": "PrizeTinyService",
+    "format": "8 kHz stereo-duplicated 16-bit",
+    "phoneCodec": "ES8311"
+  },
+  "loader": {
+    "enterUpdateMode": "gpio-knock: pwd low 50 ms, ptt low 50 ms, pwd high 1000 ms, ptt high; then byte 0x31",
+    "protocol": "ymodem-1k",
+    "promptByte": "C",
+    "checks": "none (no MD5, no signature)",
+    "measured": "2026-10-25",
+    "recoveryAfterInterruptedTransfer": true
+  },
+  "sources": {
+    "research": "phonedmrapp/docs/deep-dive/19-firmware-modification-plan.md",
+    "loaderContract": "phonedmrapp/radio_firmware/plan-loader-safety.md",
+    "results": "phonedmrapp/radio_firmware/results.md"
+  }
+}

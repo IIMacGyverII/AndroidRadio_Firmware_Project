@@ -1,0 +1,29 @@
+{
+  "tag": "DMR003.UV4T.V022",
+  "file": "DMR003.UV4T.V022.bin",
+  "size": 378620,
+  "sha256": "90e361fda1082cdd010f8f2127eab97786f2a078f2f7590821c26867526c8c10",
+  "md5": "4426035392262ca54583c230c9e268e0",
+  "device": "ulefone-armor-26-ultra",
+  "model": "Armor 26 Ultra",
+  "module": "hr-c7000",
+  "base": "DMR003.UV4T.V022",
+  "factory": true,
+  "readBack": false,
+  "stockPackage": "com.pri.prizeinterphone",
+  "stockVersion": "V1.0",
+  "summary": "The firmware this phone shipped with. Loading it puts the module back the way it was. The image stays until another one is loaded, including across a reboot.",
+  "changes": [],
+  "transmitLimitSeconds": 120,
+  "persistsAcrossReboot": true,
+  "status": "stock",
+  "measured": "2026-10-23",
+  "builtFrom": {
+    "kind": "stock-asset",
+    "package": "com.pri.prizeinterphone",
+    "version": "V1.0",
+    "asset": "assets/DMR003.UV4T.V022.bin",
+    "assetSha256": "90e361fda1082cdd010f8f2127eab97786f2a078f2f7590821c26867526c8c10"
+  },
+  "results": "phonedmrapp/docs/grok-deep-dive/11-firmware-fw0-results.md"
+}
