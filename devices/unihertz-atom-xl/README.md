@@ -18,4 +18,6 @@
 **What a port needs first:** a capture of one stock-app update to learn how `updateDmr` enters the module's update
 mode through the MCU, and the module image it runs (V082). The stock APK carries no image; the phone keeps an older one, `DMR006.U4A.V076`,
 on its vendor partition (`/vendor/data/DMR/dmr/`), now in `firmware/unihertz-atom-xl/DMR006.U4A.V076/` for research
-(not a restore image). A different build from the Armor's, so its own patch set. Full findings: `phonedmrapp/docs/multi-device-atomxl-findings.md`.
+(not a restore image). A different build from the Armor's, so its own patch set. V076's command dispatch,
+`0x3B` and `0x34` handlers are read (the Armor's jump-table switch, a different case epilogue; offsets in the
+image's README); they are V076's, not V082's, so nothing is built for this phone from them. Full findings: `phonedmrapp/docs/multi-device-atomxl-findings.md`.
