@@ -5,7 +5,7 @@
   python scripts/build_catalog.py --serial N         # verify, then write the catalogue with serial N
 
 A manifest is accepted only when its file exists, its size, sha256 and md5 match the file, the version tag at the
-module's tag offset matches "tag", and its folder is named after the tag. The catalogue is never edited by hand.
+module's tag offset (or the manifest's own "tagOffset") matches "tag", and its folder is named after the tag. The catalogue is never edited by hand.
 """
 import argparse
 import datetime
@@ -23,8 +23,9 @@ REQUIRED = ["tag", "file", "size", "sha256", "md5", "device", "model", "module",
             "status", "measured", "builtFrom", "results"]
 
 
-def tag_of(data: bytes, module: str) -> str:
-    off = TAG_AT.get(module)
+def tag_of(data: bytes, module: str, off: int = None) -> str:
+    if off is None:
+        off = TAG_AT.get(module)
     if off is None or len(data) < off + 16:
         return ""
     raw = data[off:off + 16]
@@ -53,7 +54,7 @@ def check(manifest_path: Path) -> dict:
         raise SystemExit(f"{manifest_path}: sha256 {sha} is not {m['sha256']}")
     if md5 != m["md5"].lower():
         raise SystemExit(f"{manifest_path}: md5 {md5} is not {m['md5']}")
-    tag = tag_of(data, m["module"])
+    tag = tag_of(data, m["module"], int(m["tagOffset"], 16) if "tagOffset" in m else None)   # an image whose build puts the string elsewhere
     if tag != m["tag"]:
         raise SystemExit(f"{manifest_path}: the file's version string is {tag!r}, not {m['tag']}")
     m["url"] = BASE_URL + f.relative_to(ROOT).as_posix()

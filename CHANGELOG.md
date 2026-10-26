@@ -2,6 +2,15 @@
 
 Newest first. One entry per change that a user of SignalDeck or a reader of the repository would notice.
 
+## 2026-10-26 — Atom XL module image (research copy)
+
+- `firmware/unihertz-atom-xl/DMR006.U4A.V076/`: the module image an Atom XL keeps on its vendor partition, byte for
+  byte, with manifest and README. It is older than the V082 the phone's module runs, so it is `factory: false` and
+  SignalDeck does not offer it for loading.
+- `devices/unihertz-atom-xl/`: the V076 variant and where it came from.
+- `scripts/build_catalog.py`: a manifest may name its own `tagOffset` (this image's version string is at `0x33410`).
+- Catalogue serial 5.
+
 ## 2026-10-25 — Registry, keys, recovery, templates, CI
 
 - Variant registry: `devices/<device>/variants.json` for every module version and stock asset seen on a model,

@@ -1,0 +1,30 @@
+{
+  "tag": "DMR006.U4A.V076",
+  "file": "DMR006.U4A.V076.bin",
+  "size": 358100,
+  "sha256": "4f5f287bef875fad4a5c8ca9a94c9e841a21f5b507f2cc2a0645d5947e4d40fe",
+  "md5": "61fd4306ca518f2ed4c30b583d810b58",
+  "tagOffset": "0x33410",
+  "device": "unihertz-atom-xl",
+  "model": "Atom XL",
+  "module": "hr-c7000",
+  "base": "DMR006.U4A.V076",
+  "factory": false,
+  "readBack": false,
+  "stockPackage": "com.agold.intercom",
+  "stockVersion": "2.0",
+  "summary": "The module firmware file an Atom XL keeps on its vendor partition for the stock app's updater. It is an older build than the V082 the phone's module reports, so it is kept for research and is not offered as a restore image.",
+  "changes": [],
+  "transmitLimitSeconds": null,
+  "persistsAcrossReboot": true,
+  "status": "stock",
+  "measured": null,
+  "builtFrom": {
+    "kind": "vendor-partition",
+    "package": "com.agold.intercom",
+    "version": "2.0",
+    "path": "/vendor/data/DMR/dmr/DMR006.U4A.V076.bin",
+    "fileSha256": "4f5f287bef875fad4a5c8ca9a94c9e841a21f5b507f2cc2a0645d5947e4d40fe"
+  },
+  "results": "phonedmrapp/docs/multi-device-atomxl-findings.md"
+}

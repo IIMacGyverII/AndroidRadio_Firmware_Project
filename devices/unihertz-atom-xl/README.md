@@ -16,5 +16,6 @@
 | Default frequencies in the stock app | UHF around 401 MHz, one analog at 444.800 MHz | read |
 
 **What a port needs first:** a capture of one stock-app update to learn how `updateDmr` enters the module's update
-mode through the MCU, and the module's firmware asset from the stock app (not yet extracted: different version
-string, so a different image and its own patch set). Full findings: `phonedmrapp/docs/multi-device-atomxl-findings.md`.
+mode through the MCU, and the module image it runs (V082). The stock APK carries no image; the phone keeps an older one, `DMR006.U4A.V076`,
+on its vendor partition (`/vendor/data/DMR/dmr/`), now in `firmware/unihertz-atom-xl/DMR006.U4A.V076/` for research
+(not a restore image). A different build from the Armor's, so its own patch set. Full findings: `phonedmrapp/docs/multi-device-atomxl-findings.md`.
