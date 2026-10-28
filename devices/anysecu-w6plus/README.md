@@ -41,6 +41,13 @@ needs physical access to the module's MCU (its programming interface on the modu
 - **The filter command is not accepted:** `AT+SETFILTER=1,1,1` and `AT+DMOSETFILTER=1,1,1` both came back as error
   echoes, so the high-pass cannot be bypassed over the UART. Data modes that need the bottom octave (M17's lowest
   symbol energy, POCSAG's DC content) inherit the same problem as on the HR-C7000 phones, without the firmware route.
+- **Data modes received through that path** (HackRF, 2026-10-27, SignalDeck's decoders on the camcorder input):
+  APRS 6/6 packets; SSTV Robot 36 238/240 lines, clean colour bars; FT8 both messages of a two-signal slot (in the app
+  and offline, DT +0.3 s). These need SignalDeck's fixed gain on that input (it arrives ~21 dB below the HR-C7000
+  phones' audio). **M17** (two 100-frame transmissions at ±2.4 kHz): plain slicing 64 % symbol errors; a fixed ±20-symbol
+  linear equaliser (the self-calibration's model) 22 %, so the self-calibration cannot work here; a decision-feedback
+  equaliser fitted on one transmission and re-seeded on each frame's sync word 3–4 % on the other (offline,
+  slightly optimistic). So M17 receive needs a DFE calibrated for this phone, as the HR-C7000 phones on stock firmware do.
 - **No signal-strength reading:** `RSSI?` is not answered.
 - Range: 400–470 MHz per the listing; the module's own limits are not measured.
 
