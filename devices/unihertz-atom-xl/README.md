@@ -14,8 +14,8 @@ far, full notes in `phonedmrapp/docs/atomxl/PHASE_A_FINDINGS.md`).
 | Frame format | `7E 96 69 | route | cmd | rw | len (BE) | body | checksum (BE) | 81`; route `00` = the MCU, `01` = passed to the module; Internet checksum over route…body | read |
 | Command set | the Armor's command bytes inside that envelope (`0x34` version, `0x23`/`0x24`/`0x25` channels, `0x2C` texts with a 5-byte header where the Armor's firmware needs 9) | read |
 | Audio | on the wire: USB Audio card 1 (`pcmC1D0c`/`pcmC1D0p`), **32 kHz** stereo S16, opened by the HAL; the stock app's side is 48 kHz stereo through the HAL (`openPcmIn/Out`, `readPcmDevice`, `writePcmDevice`) | measured; read |
-| USB | **radio on = no USB to a PC:** powering the radio switches the phone's only USB controller to host mode for the bridge, so a PC link (adb, file transfer) drops until the radio is powered off (HAL `stopMcu`) or the phone reboots; force-stopping the stock app does not power it off | measured |
-| PTT key | `mtk-kpd` key code 249 → `FUNC1` → Android keycode 289 (a vendor keycode); press-tested | measured |
+| USB | **radio on = no USB to a PC:** powering the radio switches the phone's only USB controller to host mode for the bridge, so a PC link (adb, file transfer) drops and comes back only after a reboot: force-stopping the stock app does not power the radio off, and even its clean power-off (HAL `stopMcu`) leaves the controller in mode "none", replug or not | measured |
+| PTT key | `mtk-kpd` key code 249 → `FUNC1` → Android keycode 289 (a vendor keycode), press-tested; the stock app receives it as `android.intent.action.PTT.down` / `.up` | measured; read |
 | Loader | HAL methods `updateMcu` and `updateDmr`; how they reach the module is not captured | read |
 | Default frequencies in the stock app | UHF around 401 MHz, one analog at 444.800 MHz | read |
 
