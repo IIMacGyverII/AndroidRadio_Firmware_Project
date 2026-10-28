@@ -47,7 +47,7 @@ needs physical access to the module's MCU (its programming interface on the modu
   phones' audio). **M17** (two 100-frame transmissions at ±2.4 kHz): plain slicing 64 % symbol errors; a fixed ±20-symbol
   linear equaliser (the self-calibration's model) 22 %, so the self-calibration cannot work here; a decision-feedback
   equaliser fitted on one transmission and re-seeded on each frame's sync word 3–4 % on the other (offline,
-  slightly optimistic). So M17 receive needs a DFE calibrated for this phone, as the HR-C7000 phones on stock firmware do.
+  slightly optimistic). With a W6 calibration and a receiver that corrects its fed-back history with known symbols (SignalDeck PR 45), two fresh over-the-air transmissions decoded 98 and 92 of 100 frames confirmed; its self-calibration refines that table from confirmed frames but cannot create one on this phone (the symbols every call carries, the preamble tone and the nearly-DC sync words, fall in the cut).
 - **No signal-strength reading:** `RSSI?` is not answered.
 - Range: 400–470 MHz per the listing; the module's own limits are not measured.
 
