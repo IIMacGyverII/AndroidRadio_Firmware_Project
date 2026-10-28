@@ -1,0 +1,44 @@
+{
+  "id": "anysecu-w6plus",
+  "vendor": "ANYSECU",
+  "model": "W6+",
+  "buildModel": "W6+",
+  "signaldeckProfile": "anysecu-w6plus",
+  "status": "measured",
+  "module": {
+    "family": "sa818-class-pb202",
+    "versionStrings": ["PB202EU05"],
+    "controlPort": "/dev/ttyS2",
+    "baud": 9600,
+    "serialLib": "libserial_port.so (stock app, android.serialport.SerialPort)",
+    "powerNode": "/sys/class/gpio/gpio322/value",
+    "pttNode": "/sys/class/gpio/gpio188/value",
+    "frontEnd": null
+  },
+  "stockApp": {
+    "package": "com.flyscale.analogpoc",
+    "version": null,
+    "firmwareAsset": null,
+    "firmwareAssetSha256": null,
+    "updaterOverridePath": null
+  },
+  "audio": {
+    "path": "module to speaker through hardware switches; Android camcorder input while receiving",
+    "format": "8 kHz mono via AudioRecord (CAMCORDER)",
+    "phoneCodec": "Unisoc sprd-codec (sprdphone card)"
+  },
+  "loader": {
+    "enterUpdateMode": "not captured",
+    "protocol": "none known: no update path in the stock app; the module answers only AT+DMO commands",
+    "promptByte": null,
+    "checks": null,
+    "measured": null,
+    "recoveryAfterInterruptedTransfer": null
+  },
+  "sources": {
+    "report": "SignalDeck docs/w6/PHASE1_BASELINE_B.md",
+    "serialSniff": "SignalDeck docs/w6/reports/20261027_serial_sniff",
+    "engineDesign": "SignalDeck docs/w6/ENGINE_DESIGN.md",
+    "receiveAudio": "SignalDeck docs/w6/RX_AUDIO_TEST.md"
+  }
+}

@@ -2,6 +2,15 @@
 
 Newest first. One entry per change that a user of SignalDeck or a reader of the repository would notice.
 
+## 2026-10-27 — ANYSECU W6+ device page and the SA818-class module page
+
+- `devices/anysecu-w6plus/` (README, `device.json`): the W6+ as measured on a bench unit: module PB202EU05 on
+  `/dev/ttyS2` 9600, GPIO map, the camcorder-input receive audio, the receive response (cut below ~300 Hz, steeper than
+  the HR-C7000 phones'), the filter command refused, no RSSI, and two `flyscale_misc` attributes that panic the kernel.
+- `modules/sa818-class-pb202/`: the command set, answers, tone codes and what was tried.
+- No image: the stock app has no update path and the module no read command; a dump needs physical access to the
+  module. No `variants.json` yet, so the signed catalogue is unchanged.
+
 ## 2026-10-26 — Atom XL module image (research copy)
 
 - `firmware/unihertz-atom-xl/DMR006.U4A.V076/`: the module image an Atom XL keeps on its vendor partition, byte for

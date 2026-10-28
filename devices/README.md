@@ -13,6 +13,7 @@ read offline), or **inferred**.
 | `unihertz-atom-xl` | Unihertz Atom XL | `DMR006.U4A.V082` | vendor HAL, USB CDC-ACM `/dev/ttyACM0`, framed envelope | report + read; unverified |
 | `blackview-xplore-1` | Blackview Xplore 1 | same protocol family | UART, audio as PCM over `/dev/ttyS1` | read; unverified |
 | `doogee-s80` | DOOGEE S80 | sibling protocol (`DMR007`) | UART | read; unverified |
+| `anysecu-w6plus` | ANYSECU W6+ | `PB202EU05` (SA818 class, analog only) | UART `/dev/ttyS2` 9600, AT commands, GPIO power | measured (receive); no update path, no image |
 
 A device page is the first thing a port needs; the loader path and the stock firmware asset are the two facts that
 decide whether an image can ever be offered there (`../SAFETY.md`).
