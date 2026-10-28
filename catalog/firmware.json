@@ -1,7 +1,7 @@
 {
  "format": 1,
- "serial": 5,
- "generated": "2026-10-26",
+ "serial": 6,
+ "generated": "2026-10-28",
  "base": "https://raw.githubusercontent.com/IIMacGyverII/AndroidRadio_Firmware_Project/main/",
  "images": [
   {
@@ -137,11 +137,26 @@
      "assetSha256": "4f5f287bef875fad4a5c8ca9a94c9e841a21f5b507f2cc2a0645d5947e4d40fe",
      "assetSize": 358100,
      "supportedBase": false,
-     "reports": 1,
+     "reports": 2,
      "firstSeen": "2026-10-26",
-     "lastSeen": "2026-10-26",
+     "lastSeen": "2026-10-28",
      "source": "vendor-partition",
-     "notes": "The updater copy on the vendor partition (/vendor/data/DMR/dmr/), not what the module runs (V082). Image in firmware/unihertz-atom-xl/DMR006.U4A.V076/; no base, no patches."
+     "notes": "The updater copy on the vendor partition (/vendor/data/DMR/dmr/), not what the module runs (V082 on the reporting owner's phone, V067 on the bench phone). Image in firmware/unihertz-atom-xl/DMR006.U4A.V076/; no base, no patches."
+    },
+    {
+     "moduleVersion": "DMR006.U4A.V067",
+     "stockApp": {
+      "package": "com.agold.intercom",
+      "version": "2.0"
+     },
+     "assetSha256": null,
+     "assetSize": null,
+     "supportedBase": false,
+     "reports": 1,
+     "firstSeen": "2026-10-28",
+     "lastSeen": "2026-10-28",
+     "source": "measured",
+     "notes": "The bench phone's module (0x34 reply through the bridge, 2026-10-28). The image is not on the phone (vendor partition, data, every partition but userdata searched read only; only V076 is there) and not in the stock APK, so no base and no patches."
     }
    ]
   }
