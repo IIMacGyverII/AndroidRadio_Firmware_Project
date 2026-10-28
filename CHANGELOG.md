@@ -2,6 +2,14 @@
 
 Newest first. One entry per change that a user of SignalDeck or a reader of the repository would notice.
 
+## 2026-10-30 — Atom XL: module versions vary per unit; the running image is not on the phone
+
+- `devices/unihertz-atom-xl/variants.json`: variant `DMR006.U4A.V067`, measured on a bench Atom XL (not supported, no
+  image). V076's note now says the module runs V082 on one phone and V067 on another.
+- `devices/unihertz-atom-xl/README.md`: per-unit module version, bridge MCU (USB `0483:5730`), 32 kHz USB audio, the
+  USB host-mode switch while the radio is on, the PTT key, and where the running image was looked for and not found.
+- Catalogue serial 7 (signed with the firmware key, as every serial from 6).
+
 ## 2026-10-30 — DMR003.FW57.V022 released for the Armor 26 Ultra (catalogue serial 6)
 
 - `firmware/ulefone-armor-26-ultra/DMR003.FW57.V022/`: the first released modified image (owner, 2026-10-30). Adds the module transmitter (M17, POCSAG, FT8, RTTY, Morse) and keeps FM, CTCSS, SSTV and DMR as shipped. Reproducible from phonedmrapp `a7943723` (`tools/fw-patch/test_repro_fw57.py`, 19 steps from the factory image). Measured rows in its README.
