@@ -57,5 +57,5 @@ None.
 
 ## Sources
 
-`SignalDeck` `docs/w6/` (device report findings, serial sniff, engine design, receive-audio test) and the SignalDeck
+`SignalDeck` `docs/w6/` (device report findings, serial sniff, engine design, receive-audio test, and `FEATURES.md`: which SignalDeck features work on this phone and which cannot) and the SignalDeck
 `ANYSECU_W6` profile (`anysecu-w6plus`, unverified: transmit is not tested on air).
