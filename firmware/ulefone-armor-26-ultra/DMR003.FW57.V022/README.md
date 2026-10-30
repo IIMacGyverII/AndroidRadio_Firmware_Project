@@ -5,6 +5,8 @@ so SignalDeck can send digital modes that the radio's audio path cannot carry. *
 newer** (versionCode 121); older builds do not offer it (catalogue status `released-min`, and catalogue serial 6 is
 signed with the firmware key they do not know).
 
+> **At your own risk.** Loading module firmware is at your own risk. The released images are tested on the bench, and SignalDeck checks the phone, the module and the file before anything is written; you can always load the factory image again. Still, the images, the catalogue and this repository come with **no warranty of any kind**, and SignalDeck, this project and its contributors are **not responsible** for a radio module that stops working, for any other damage, or for what a radio transmits. The operator is responsible for staying within their own licence conditions.
+
 | Item | Value |
 |---|---|
 | File | `DMR003.FW57.V022.bin`, 378,620 bytes |

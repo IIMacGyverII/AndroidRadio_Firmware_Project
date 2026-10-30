@@ -2,6 +2,10 @@
 
 Newest first. One entry per change that a user of SignalDeck or a reader of the repository would notice.
 
+## 2026-10-30 — At-your-own-risk / no-warranty statement
+
+- `README.md`, `SAFETY.md` and the FW57 README carry the same statement SignalDeck shows on its Module firmware page (owner request): loading is at your own risk, no warranty, no responsibility for a module that stops working or for what it transmits. No catalogue change.
+
 ## 2026-10-30 — SignalDeck 1.0.0-beta.22 published; FW57 is now offered
 
 - SignalDeck beta.22 (versionCode 121, release asset sha256 `62b6ad8632aedbb275fe44a0a2f65f0b6b0e5d85a2cea117cfc5fa5d0382e62a`) is the first build that verifies catalogue serial 6 (firmware key) and offers `DMR003.FW57.V022` (`released-min` 121). Tested end to end before publishing, on an Armor 26 Ultra starting from the factory image, through the app's own Module firmware page: the catalogue fetched and verified, FW57 downloaded and checked, pre-flight, load (370/370 blocks), module reporting FW57; FM, DMR, M17 and Morse transmissions decoded by an independent receiver; Restore back to the factory image. Records: phonedmrapp `radio_firmware/results.md` (2026-10-30, 13:37 and 13:45).
