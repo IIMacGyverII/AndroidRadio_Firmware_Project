@@ -2,6 +2,10 @@
 
 Newest first. One entry per change that a user of SignalDeck or a reader of the repository would notice.
 
+## 2026-10-30 — SignalDeck 1.0.0-beta.22 published; FW57 is now offered
+
+- SignalDeck beta.22 (versionCode 121, release asset sha256 `62b6ad8632aedbb275fe44a0a2f65f0b6b0e5d85a2cea117cfc5fa5d0382e62a`) is the first build that verifies catalogue serial 6 (firmware key) and offers `DMR003.FW57.V022` (`released-min` 121). Tested end to end before publishing, on an Armor 26 Ultra starting from the factory image, through the app's own Module firmware page: the catalogue fetched and verified, FW57 downloaded and checked, pre-flight, load (370/370 blocks), module reporting FW57; FM, DMR, M17 and Morse transmissions decoded by an independent receiver; Restore back to the factory image. Records: phonedmrapp `radio_firmware/results.md` (2026-10-30, 13:37 and 13:45).
+
 ## 2026-10-30 — DMR003.FW57.V022 released for the Armor 26 Ultra (catalogue serial 6)
 
 - `firmware/ulefone-armor-26-ultra/DMR003.FW57.V022/`: the first released modified image (owner, 2026-10-30). Adds the module transmitter (M17, POCSAG, FT8, RTTY, Morse) and keeps FM, CTCSS, SSTV and DMR as shipped. Reproducible from phonedmrapp `a7943723` (`tools/fw-patch/test_repro_fw57.py`, 19 steps from the factory image). Measured rows in its README.
