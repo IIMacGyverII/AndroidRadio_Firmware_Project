@@ -2,6 +2,10 @@
 
 Newest first. One entry per change that a user of SignalDeck or a reader of the repository would notice.
 
+## 2026-10-30 — Catalogue serial 8: FW57's receive-flag wording
+
+- FW57's catalogue text (shown in SignalDeck and on signaldeckradio.com) no longer reads like a promiscuous-receive feature: the flag is described as experimental and not used by SignalDeck. Bench result behind it: hearing out-of-list talkgroups is the radio's stock MON function. Image, hashes and status unchanged. Signed with the firmware key.
+
 ## 2026-10-30 — Atom XL: module versions vary per unit; the running image is not on the phone
 
 - `devices/unihertz-atom-xl/variants.json`: variant `DMR006.U4A.V067`, measured on a bench Atom XL (not supported, no

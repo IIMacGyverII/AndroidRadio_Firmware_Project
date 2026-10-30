@@ -23,8 +23,8 @@ signed with the firmware key they do not know).
 - **A module transmitter (command `0x40`)**: M17 voice and text frames, and generic symbol and tone engines used for
   POCSAG pages, FT8, RTTY and Morse. These play from the HR-C7000's transmit RAM, not through the audio path.
 - **A receive-filter hold** that SignalDeck uses for M17 and page receive on analog channels.
-- **A promiscuous DMR receive flag** (off at every boot). It does not admit out-of-list calls yet; SignalDeck beta.22
-  does not use it.
+- **An experimental DMR receive flag** (off at every boot), not used by SignalDeck. Hearing talkgroups outside the
+  channel's list is the radio's own monitor (MON) function, unchanged from the stock firmware.
 
 ## What stays as shipped
 

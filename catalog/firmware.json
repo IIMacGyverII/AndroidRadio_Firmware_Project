@@ -1,6 +1,6 @@
 {
  "format": 1,
- "serial": 7,
+ "serial": 8,
  "generated": "2026-10-30",
  "base": "https://raw.githubusercontent.com/IIMacGyverII/AndroidRadio_Firmware_Project/main/",
  "images": [
@@ -20,7 +20,7 @@
    "stockVersion": "V1.0",
    "summary": "SignalDeck's first released module firmware for the Armor 26 Ultra. It adds a transmitter that sends M17 voice and text, POCSAG pages, FT8, RTTY and Morse straight from the module, and keeps plain FM, CTCSS, SSTV and DMR as the phone shipped. Needs SignalDeck beta.22 or newer.",
    "changes": [
-    "Command 0x40 (new): M17 symbol transmitter, generic symbol and tone engines (POCSAG, FT8, RTTY, Morse), receive-filter hold for M17 and page receive, flash read-back, promiscuous DMR receive flag (off at every boot).",
+    "Command 0x40 (new): M17 symbol transmitter, generic symbol and tone engines (POCSAG, FT8, RTTY, Morse), receive-filter hold for M17 and page receive, flash read-back, and an experimental DMR receive flag (off at every boot; not used by SignalDeck).",
     "Key path: plain FM, CTCSS, SSTV and DMR keys run the stock key; only a queued symbol or tone transmission takes the module transmitter.",
     "Transmit time-out: unchanged from stock. The module stores the value the app sends (SignalDeck sends 120 s at start-up); no time-out is added in firmware (owner rule 2026-10-28).",
     "No band-limit, frequency-range or power changes."
