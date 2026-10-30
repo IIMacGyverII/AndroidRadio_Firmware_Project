@@ -21,4 +21,4 @@ Nothing has been run on a 20WT by us. SignalDeck profile id `ulefone-armor20wt` 
 
 **Loader:** the stock app has **no update path**. There's no YModem code, no knock, and it never touches the `ptt` line. Whether this module's bootloader answers the 26 Ultra's knock is therefore unknown, and SignalDeck's loader is switched off for this profile.
 
-**Stock image:** the APK carries none, so it can only come from the phone (SignalDeck *Device → Find firmware files* lists name, size and SHA-256). No image is offered to this phone until the variant is known and its stock copy is in this repository.
+**Stock image:** the APK carries none, so it can only come from the phone (SignalDeck *Device → Device report → Radio firmware files* lists name, size and SHA-256). No image is offered to this phone until the variant is known and its stock copy is in this repository.
