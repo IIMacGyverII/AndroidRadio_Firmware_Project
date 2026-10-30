@@ -20,7 +20,7 @@ Nothing has been transmitted on an Xplore 1 by us. SignalDeck profile id `blackv
 | Boot handshake | banner → `0x27` → `0x34` → channel; after each channel's acknowledgement `0x35` 2 → `0x37` 0, and for analog `0x2F` + `0x30` 200 ms later. Never `0x2A`, `0x2B`, `0x31`, `0x32`, `0x3C`; `0x3B` only when the user changes the transmit limit; `0x36` never acknowledged | read |
 | Texts | `0x2C` body = type (1/2 private, 3 group), target LE32, **UTF-8** text (5-byte header); received texts read as UTF-8 | read |
 
-**Loader** (read): the app has a hidden firmware-update screen (secret code `*#*#18233#*#*`):
+**Loader** (read): the app has a hidden firmware-update screen:
 1. The knock: ptt line `0`, 55 ms later power + pwd `1`, 1050 ms later the ptt line back to `1`.
 2. The byte `0x31`.
 3. YModem-1K with CRC16-XMODEM (`01` header packet "Filename.bin" + size, `02` 1 KiB packets, `04` at the end).
