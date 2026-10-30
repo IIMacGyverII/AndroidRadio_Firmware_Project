@@ -37,7 +37,7 @@ the app is `SignalDeck`. This repository records results; it does not run the be
 
 ## Keys
 
-The private signing key is never in any repository (`catalog/KEYS.md`); the public key and its fingerprint are published in `catalog/` and checked by `scripts/verify_catalog.py`. A separate firmware key is planned before the first released image; rotation is written down in `KEYS.md` and never done silently.
+Private signing keys are never in any repository (`catalog/KEYS.md`); the public keys and their fingerprints are published in `catalog/` and checked by `scripts/verify_catalog.py`. **Two keys since 2026-10-30 (owner):** catalogue serials below 6 are signed with the shared profile-list key (`public_key.pem`); from serial 6, the first catalogue with a released image (FW57), with the firmware key (`public_key_firmware.pem`, private half `~/.signaldeck/firmware_signing_key.pem`). `scripts/keys.py` holds the switch serial; `sign_catalog.py` and `verify_catalog.py` pick the key from it. SignalDeck carries both public keys from beta.22. Rotation is written down in `KEYS.md` and never done silently.
 
 ## Where the facts come from
 
