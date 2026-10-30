@@ -2,6 +2,14 @@
 
 Newest first. One entry per change that a user of SignalDeck or a reader of the repository would notice.
 
+## 2026-10-30 — Atom XL: module versions vary per unit; the running image is not on the phone
+
+- `devices/unihertz-atom-xl/variants.json`: variant `DMR006.U4A.V067`, measured on a bench Atom XL (not supported, no
+  image). V076's note now says the module runs V082 on one phone and V067 on another.
+- `devices/unihertz-atom-xl/README.md`: per-unit module version, bridge MCU (USB `0483:5730`), 32 kHz USB audio, the
+  USB host-mode switch while the radio is on, the PTT key, and where the running image was looked for and not found.
+- Catalogue serial 7 (signed with the firmware key, as every serial from 6).
+
 ## 2026-10-30 — At-your-own-risk / no-warranty statement
 
 - `README.md`, `SAFETY.md` and the FW57 README carry the same statement SignalDeck shows on its Module firmware page (owner request): loading is at your own risk, no warranty, no responsibility for a module that stops working or for what it transmits. No catalogue change.
