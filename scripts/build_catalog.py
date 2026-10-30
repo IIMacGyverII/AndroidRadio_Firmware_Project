@@ -61,7 +61,9 @@ def check(manifest_path: Path) -> dict:
     return m
 
 
-ALLOWED_STATUS = {"stock", "released"}   # bench and beta images are never committed here (owner, 2026-10-25)
+ALLOWED_STATUS = {"stock", "released", "released-min"}   # bench and beta images are never committed here (owner, 2026-10-25)
+# "released-min": a released image that needs SignalDeck versionCode >= "minAppVersionCode" (SignalDeck PR 144). Builds that
+# predate it offer only "stock" and "released", so they never offer such an image (FW57 needs beta.22's data-hold fix).
 
 
 def variants() -> list:
@@ -99,7 +101,9 @@ def main():
     entries = [check(p) for p in sorted((ROOT / "firmware").glob("*/*/manifest.json"))]
     for e in entries:
         if e["status"] not in ALLOWED_STATUS:
-            raise SystemExit(f"{e['device']}/{e['tag']}: status {e['status']!r} is not allowed here (stock or released only)")
+            raise SystemExit(f"{e['device']}/{e['tag']}: status {e['status']!r} is not allowed here (stock, released or released-min only)")
+        if e["status"] == "released-min" and not (isinstance(e.get("minAppVersionCode"), int) and e["minAppVersionCode"] > 0):
+            raise SystemExit(f"{e['device']}/{e['tag']}: released-min needs a positive integer minAppVersionCode")
     vs = variants()
     print(f"{len(entries)} image(s) verified, {sum(len(d['variants']) for d in vs)} variant(s) from {len(vs)} device(s)")
     for e in entries:

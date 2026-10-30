@@ -2,6 +2,27 @@
 
 Newest first. One entry per change that a user of SignalDeck or a reader of the repository would notice.
 
+## 2026-10-30 — DMR003.FW57.V022 released for the Armor 26 Ultra (catalogue serial 6)
+
+- `firmware/ulefone-armor-26-ultra/DMR003.FW57.V022/`: the first released modified image (owner, 2026-10-30). Adds the module transmitter (M17, POCSAG, FT8, RTTY, Morse) and keeps FM, CTCSS, SSTV and DMR as shipped. Reproducible from phonedmrapp `a7943723` (`tools/fw-patch/test_repro_fw57.py`, 19 steps from the factory image). Measured rows in its README.
+- Catalogue serial 6, the first signed with the firmware key. FW57 is `released-min` with `minAppVersionCode` 121: offered only by SignalDeck beta.22 and newer. Older builds cannot verify serial 6 and keep serial 5.
+- Known open: promiscuous DMR receive does not admit out-of-list calls yet (not used by SignalDeck beta.22); slot 1 DMR receive not covered by the bench.
+
+## 2026-10-30 — A separate firmware signing key; the released-min status
+
+- **Firmware key** (owner, 2026-10-30, before the first released image): `catalog/public_key_firmware.pem` / `.b64`, fingerprint `49:cc:c9:d6:bb:3f:c1:1e:61:a7:44:38:02:b8:18:5b:eb:d7:fe:fd:cd:fd:d0:95:52:66:63:2a:08:0c:2f:01`. It signs catalogue serial 6 and later; serials 1–5 stay signed with the shared profile-list key. `scripts/keys.py` holds the switch; `sign_catalog.py` and `verify_catalog.py` choose the key from the serial. SignalDeck carries both public keys from beta.22, so older builds keep the last catalogue they could verify.
+- **`released-min`** catalogue status with `minAppVersionCode` (SignalDeck PR 144): a released image offered only to new enough app builds. FW57 will use it (needs SignalDeck beta.22). `build_catalog.py` refuses it without a positive minimum.
+- The published catalogue (serial 5) is unchanged.
+
+## 2026-10-27 — ANYSECU W6+ device page and the SA818-class module page
+
+- `devices/anysecu-w6plus/` (README, `device.json`): the W6+ as measured on a bench unit: module PB202EU05 on
+  `/dev/ttyS2` 9600, GPIO map, the camcorder-input receive audio, the receive response (cut below ~300 Hz, steeper than
+  the HR-C7000 phones'), the filter command refused, no RSSI, and two `flyscale_misc` attributes that panic the kernel.
+- `modules/sa818-class-pb202/`: the command set, answers, tone codes and what was tried.
+- No image: the stock app has no update path and the module no read command; a dump needs physical access to the
+  module. No `variants.json` yet, so the signed catalogue is unchanged.
+
 ## 2026-10-26 — Atom XL module image (research copy)
 
 - `firmware/unihertz-atom-xl/DMR006.U4A.V076/`: the module image an Atom XL keeps on its vendor partition, byte for
