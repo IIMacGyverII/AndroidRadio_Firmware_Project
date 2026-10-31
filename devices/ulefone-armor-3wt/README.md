@@ -20,7 +20,7 @@ The phone in the report runs a LineageOS 21 GSI with those programs. Nothing has
 | Module chip | unknown: no image, and the version string is not in the `DMR00x` format of the HR-C7000 family | — |
 | Keying | the daemon's PTT control: the bridge's PTT line plus a bridge frame. The module gets no key command | read |
 | Audio | 48 kHz stereo 16-bit, 10 ms frames, over the daemon's socket (32 kHz with `ro.agold.extmodule.32k`) | read |
-| Frequencies | the intercom app accepts 100–470 MHz. The module's own range is not measured; the owner listens at 133.85 MHz | read, owner |
+| Frequencies | the intercom app accepts 100–470 MHz; the module's own range is not measured | read |
 | Side key | scancode `0xf9` on `mtk-kpd` | report |
 
 **Loader:** the daemon has a module update path (YModem after a PTT-held start, the same scheme as the Armor 26 Ultra's knock). But **no module image exists**: two stock ROMs a year apart and the owner's Magisk module carry only the bridge MCU's images. The module has no flash read command that we know of. The tester asked for no firmware changes, and SignalDeck's loader is off for this phone (uncertified).
